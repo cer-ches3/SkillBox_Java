@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/M2.3 Operators if else/M2.3 Operators if else.iml" filepath="$PROJECT_DIR$/M2.3 Operators if else/M2.3 Operators if else.iml" />
+      <module fileurl="file://$PROJECT_DIR$/M2.4 Boolean operation/M2.4 Boolean operation.iml" filepath="$PROJECT_DIR$/M2.4 Boolean operation/M2.4 Boolean operation.iml" />
+      <module fileurl="file://$PROJECT_DIR$/M2.4 CoffieMachine/M2.4 CoffieMachine.iml" filepath="$PROJECT_DIR$/M2.4 CoffieMachine/M2.4 CoffieMachine.iml" />
+      <module fileurl="file://$PROJECT_DIR$/M2.5 Conditions/M2.5 Conditions.iml" filepath="$PROJECT_DIR$/M2.5 Conditions/M2.5 Conditions.iml" />
+      <module fileurl="file://$PROJECT_DIR$/M2.5 VlozhennieUslovia/M2.5 VlozhennieUslovia.iml" filepath="$PROJECT_DIR$/M2.5 VlozhennieUslovia/M2.5 VlozhennieUslovia.iml" />
+      <module fileurl="file://$PROJECT_DIR$/M2.9 RoadCamera/M2.9 RoadCamera.iml" filepath="$PROJECT_DIR$/M2.9 RoadCamera/M2.9 RoadCamera.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/SkillBox_Java.iml" filepath="$PROJECT_DIR$/.idea/SkillBox_Java.iml" />
+    </modules>
+  </component>
+</project>
