@@ -18,6 +18,9 @@ public class ProductBasket {
         printListProduct("Содержимое корзины: ");
         toPay("Проверка платежа: ");
 
+        topBalance(1000);
+        toPay("Проверка платежа: ");
+
 
 
     }
@@ -59,6 +62,10 @@ public class ProductBasket {
     }
 
     public static void topBalance(int sumTop){
+        System.out.println("\n" + "Проверка платежа: ");
+        balance = balance + sumTop;
+        System.out.println("Пополнение баланса прошло успешно!" + "\n"
+                + "Текущий баланс: " + balance);
 
     }
 
