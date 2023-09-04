@@ -16,14 +16,15 @@ public class Calculator {
 
             System.out.println("Введите символ операции (+ - * / ): ");
             operation = new Scanner(System.in).nextLine();
-            if (operation != "+"){
-                System.out.println("Вы ввели некорректный символ операции");
-            }
+
             switch (operation){
                 case "+" -> { sum();}
                 case "-" -> { difference();}
                 case "*" -> { multiply();}
                 case "/" -> { divide();}
+                default -> {
+                    System.out.println("Вы ввели некорректный символ операции");
+                }
             }
         }
     }
