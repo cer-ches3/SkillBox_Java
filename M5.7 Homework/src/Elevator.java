@@ -22,7 +22,7 @@ public class Elevator {
 
     public void move(int floor) {
         if (floor == currentFloor || floor > minFloor || floor < maxFloor) {
-            System.out.println("Вы ввели некорректный этаж, повторите ввод!");
+            System.out.println("Вы ввели некорректный этаж");
         }
         while (floor != currentFloor && currentFloor < maxFloor && currentFloor > minFloor) {
             if (floor > currentFloor) {
