@@ -6,15 +6,24 @@ public class BankCard {
     public  int enterPinCode;
     public  boolean pinCodeAccepted;
 
-    public void authorisation() {
-        System.out.println("Введите пинкод");
-        enterPinCode  = new Scanner(System.in).nextInt();
-        if (enterPinCode == pinCode){
-            pinCodeAccepted = true;
-        }else{
-            pinCodeAccepted = false;
-        }
+    public BankCard(double balance) {
+        this.balance = balance;
     }
+
+    public void authorisation() {
+            while (enterPinCode != pinCode){
+                System.out.println("Введите пинкод");
+                enterPinCode  = new Scanner(System.in).nextInt();
+                if (enterPinCode == pinCode){
+                    pinCodeAccepted = true;
+                    System.out.println("Доступ разрешен");
+                }else{
+                    pinCodeAccepted = false;
+                    System.out.println("Доступ запрещен");
+                    break;
+                }
+            }
+        }
     public double getBalance(){
         return balance;
     }
