@@ -1,4 +1,4 @@
-public class Main {
+public class MainBankCard {
     public static void main(String[] args) {
         BankCard user = new BankCard(500);
         user.authorisation();
