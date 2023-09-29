@@ -69,12 +69,12 @@ public class Main {
                 new Product("Чайник", 1890),
                 new Product("Фильтр для воды", 1200),
         };
-        int MIN_PRICE_FOR_COUNT = 1000;
+        int MIN_PRICE_FOR_DISCOUNT = 1000;
         double discount = 0.1;
         for (int i = 0; i < products.length; i++){
             Product product = products[i];
             int price = product.getPrice();
-            if (price > MIN_PRICE_FOR_COUNT){
+            if (price > MIN_PRICE_FOR_DISCOUNT){
                 int newPrice = (int) (price * (1 - discount));
                 products[i] = new Product(product.getName(), newPrice);
             }
