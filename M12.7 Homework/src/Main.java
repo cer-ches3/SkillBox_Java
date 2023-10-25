@@ -11,35 +11,49 @@ public class Main {
      */
 
     public static void main(String[] args) {
-        String firstLetter = "";
-        String threeNumbers = "";
-        String[] letters = {"А", "В", "Е", "К", "М", "Н", "О", "Р", "С", "Т", "У", "Х"};
-        ArrayList<String>arrayLetters = new ArrayList<>();
-        for (String letter : letters) {
-            arrayLetters.add(letter);
-        }
-        Collections.shuffle(arrayLetters);
+        String letter1 = "";
+        String letter2 = "";
+        String letter3 = "";
+        String number = "";
+        String region = "";
 
-        String[] numbers = {"0", "1", "2", "3", "4", "5", "6", "7", "8", "9"};
-        ArrayList<String>arrayNumbers = new ArrayList<>();
-        for (String number : numbers) {
-            arrayNumbers.add(number);
-        }
-        Collections.shuffle(arrayNumbers);
+        for (int i = 0; i <= 100; i++) {
 
-        //todo Получаем 1 букву
-        for (int i = 0; i < 1; i++){
-            firstLetter = arrayLetters.get(i);
-            System.out.println("Первая буква: " +  firstLetter);
+            //todo Получаем буквы
+            String[] letters = {"А", "В", "Е", "К", "М", "Н", "О", "Р", "С", "Т", "У", "Х"};
+            ArrayList<String> arrayLetters = new ArrayList<>();
+            for (String letter : letters) {
+                arrayLetters.add(letter);
+            }
+            Collections.shuffle(arrayLetters);
+            letter1 = arrayLetters.get(0);
+            letter2 = arrayLetters.get(1);
+            letter3 = arrayLetters.get(2);
+
+            /*for (int l1 = 0; l1 < 1; l1++) {
+                letter1 = arrayLetters.get(l1);
+            }
+            for (int l2 = 0; l2 < 1; l2++) {
+                letter2 = arrayLetters.get(l2);
+            }
+            for (int l3 = 0; l3 < 1; l3++) {
+                letter3 = arrayLetters.get(l3);
+            }*/
+
+            // todo Получаем 3 цыфры
+            for (int nums = 111; nums <= 999; nums = nums + 111) {
+                number = Integer.toString(nums);
+                for (int reg = 0; reg <= 199; reg++) {
+                    region = Integer.toString(reg);
+                }
+            }
+
+            // todo Получаем регион
+
+            System.out.println(letter1.concat(number).concat(letter2).concat(letter3).concat(region));
         }
 
-        // todo Получаем 3 цыфры
-        for (int i = 0; i < 3; i++){
-            threeNumbers = arrayNumbers.get(i);
-        }
-        System.out.println("Три цифры: " +  threeNumbers);
-
-        System.out.println(firstLetter.concat(threeNumbers));
     }
 }
+
 
