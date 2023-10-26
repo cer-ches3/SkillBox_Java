@@ -1,6 +1,4 @@
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Collections;
+import java.util.*;
 
 public class Main {
     /*
@@ -11,48 +9,20 @@ public class Main {
      */
 
     public static void main(String[] args) {
-        String letter1 = "";
-        String letter2 = "";
-        String letter3 = "";
-        String number = "";
-        String region = "";
 
-        for (int i = 0; i <= 100; i++) {
+        System.out.println("Введите номер автомобиля: ");
+        String enteredNumber = new Scanner(System.in).nextLine();
+        List<String> coolNumbers = new ArrayList<>(CoolNumbers.generateCoolNumbers());
 
-            //todo Получаем буквы
-            String[] letters = {"А", "В", "Е", "К", "М", "Н", "О", "Р", "С", "Т", "У", "Х"};
-            ArrayList<String> arrayLetters = new ArrayList<>();
-            for (String letter : letters) {
-                arrayLetters.add(letter);
-            }
-            Collections.shuffle(arrayLetters);
-            letter1 = arrayLetters.get(0);
-            letter2 = arrayLetters.get(1);
-            letter3 = arrayLetters.get(2);
+        CoolNumbers.bruteForceSearchInList(coolNumbers, enteredNumber);
 
-            /*for (int l1 = 0; l1 < 1; l1++) {
-                letter1 = arrayLetters.get(l1);
-            }
-            for (int l2 = 0; l2 < 1; l2++) {
-                letter2 = arrayLetters.get(l2);
-            }
-            for (int l3 = 0; l3 < 1; l3++) {
-                letter3 = arrayLetters.get(l3);
-            }*/
+        CoolNumbers.binarySearchInList(coolNumbers, enteredNumber);
 
-            // todo Получаем 3 цыфры
-            for (int nums = 111; nums <= 999; nums = nums + 111) {
-                number = Integer.toString(nums);
-                for (int reg = 0; reg <= 199; reg++) {
-                    region = Integer.toString(reg);
-                }
-            }
+        HashSet<String> hashCoolNumbers = new HashSet<>(coolNumbers);
+        CoolNumbers.searchInHashSet((HashSet<String>) hashCoolNumbers, enteredNumber);
 
-            // todo Получаем регион
-
-            System.out.println(letter1.concat(number).concat(letter2).concat(letter3).concat(region));
-        }
-
+        TreeSet<String> threeCoolNumbers = new TreeSet<>(coolNumbers);
+        CoolNumbers.searchInTreeSet((TreeSet<String>) threeCoolNumbers, enteredNumber);
     }
 }
 
