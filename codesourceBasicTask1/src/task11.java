@@ -6,8 +6,14 @@
         Площадь = 176.71458676442586*/
 
 public class task11 {
-    public static void main(String[] args) {
-        double PI = 3.1415;
+        public static void main(String[] args) {
+            double radius = 7.5;
+            double perimetr = 2 * Math.PI * radius;
+            double area = Math.PI * Math.pow(radius, 2);
+
+            System.out.println("Периметр: " + perimetr);
+            System.out.println("Площадь: " + area);
+
 
 
     }
