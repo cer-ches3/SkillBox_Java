@@ -8,9 +8,11 @@ import java.util.Scanner;
         Сумма цифр: 7*/
 public class task33 {
     public static void main(String[] args) {
-        System.out.println("Введите целое число: ");
-        int input = new Scanner(System.in).nextInt();
-        System.out.println("Сумма чисел равна: " + sumDigits(input));
+       while (true){
+           System.out.println("Введите целое число: ");
+           int input = new Scanner(System.in).nextInt();
+           System.out.println("Сумма чисел равна: " + sumDigits(input));
+       }
     }
 
     public static int sumDigits(int input) {
