@@ -1,13 +1,13 @@
-public class Lamp {
-    public static final double MAX_BRIGHTNESS = 1D;
-    public static final double MIN_BRIGHTNESS = 0D;
+public abstract class LightDevice implements ElectricDevice{
+    protected static final double MAX_BRIGHTNESS = 1D;
+    protected static final double MIN_BRIGHTNESS = 0D;
+    protected final int power;
+    protected double brightness;
 
-    private final int power;
-    private double brightness;
-
-    public Lamp(int power) {
+    public LightDevice(int power) {
         this.power = power;
     }
+
     public void setBrightness(double level) {
         if (level < MIN_BRIGHTNESS){
             brightness = MIN_BRIGHTNESS;
@@ -27,7 +27,16 @@ public class Lamp {
         setBrightness(changed);
     }
 
-    public double getEnergyConsumption() {
-        return power * brightness;
+    public void switchOn() {
+        brightness = MAX_BRIGHTNESS;
     }
+
+    public void switchOff() {
+        brightness = MIN_BRIGHTNESS;
+    }
+
+    public boolean isSwitchedOn() {
+        return brightness > 0;
+    }
+
 }
