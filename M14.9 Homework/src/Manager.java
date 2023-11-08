@@ -1,21 +1,17 @@
-public class Manager implements Employee {
-    private final int FIX_SALARY = 50_000;
-    private double monthSalary = 0;
-    private final double BONUS = 0.05;
+public class Manager extends Employees
+        implements Employee {
+    private final double bonus;
     private final double salaryForCompany;
 
     public Manager(Company company) {
+        super(company);
+        fixSalary = 50_000;
+        bonus = 0.05;
         salaryForCompany = (Math.random() * 25_000) + 115_000;
-        monthSalary += (int) FIX_SALARY + (salaryForCompany * BONUS);
+        monthSalary += fixSalary + (salaryForCompany * bonus);
     }
 
-    @Override
-    public int getMonthSalary() {
-        return (int) monthSalary;
-    }
-
-    @Override
-    public String toString() {
-        return getClass().getName() + " - Доход - " + getMonthSalary() + " руб.";
+    public double getSalaryForCompany() {
+        return salaryForCompany;
     }
 }

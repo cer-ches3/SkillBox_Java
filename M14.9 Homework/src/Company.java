@@ -1,14 +1,21 @@
-import java.util.ArrayList;
-import java.util.Comparator;
-import java.util.List;
+import java.util.*;
 
 public class Company {
-    public int income = 0;
+    public int income;
 
     private static final ArrayList<Employee> employee = new ArrayList<>();
 
     public Company() {
         new ArrayList<String>();
+    }
+
+    public int getIncome() {
+        for (Employee emp : employee) {
+            if (emp instanceof Manager) {
+                income += ((Manager) emp).getSalaryForCompany();
+            }
+        }
+        return income;
     }
 
     public void hire(Employee employee) {
@@ -27,28 +34,34 @@ public class Company {
     }
 
     public List<Employee> getTopSalaryStaff(int count) {
-       return null;
+        List<Employee> topSalary = new ArrayList<>();
+        Collections.sort(employee, new Comparator<Employee>() {
+            @Override
+            public int compare(Employee o1, Employee o2) {
+                return o2.getMonthSalary() - o1.getMonthSalary();
+            }
+        });
+        for (int i = 0; i < count; i++) {
+            topSalary.add(employee.get(i));
+        }
+        return topSalary;
     }
 
     public List<Employee> getLowestSalaryStaff(int count) {
-        return null;
+        List<Employee> topSalary = new ArrayList<>();
+        Collections.sort(employee, new Comparator<Employee>() {
+            @Override
+            public int compare(Employee o1, Employee o2) {
+                return o1.getMonthSalary() - o2.getMonthSalary();
+            }
+        });
+        for (int i = 0; i < count; i++) {
+            topSalary.add(employee.get(i));
+        }
+        return topSalary;
     }
 
-    public List<Employee> getEmployee() {
+    public ArrayList<Employee> getEmployee() {
         return employee;
-    }
-    public int getIncome() {
-        for (Employee employees : employee){
-            if (employees instanceof TopManager){
-                income += ((TopManager)employees).getMonthSalary();
-            }
-            if (employees instanceof Manager){
-                income += ((Manager)employees).getMonthSalary();
-            }
-            if (employees instanceof Operator){
-                income += ((Operator)employees).getMonthSalary();
-            }
-        }
-        return income;
     }
 }
