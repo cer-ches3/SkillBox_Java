@@ -42,50 +42,44 @@ public class Main {
                 case "К" -> {
                     if (computerValue.equals("К")) {
                         System.out.println("Ничья");
-                        function.getAllScore(user1, user2);
                     }
                     if (computerValue.equals("Н")) {
                         System.out.println("Победил " + "\"" + user2.getName() + "\"");
                         user2.increaseScore();
-                        function.getAllScore(user1, user2);
                     }
                     if (computerValue.equals("Б")) {
                         System.out.println("Победил " + "\"" + user1.getName() + "\"");
                         user1.increaseScore();
-                        function.getAllScore(user1, user2);
                     }
+                    function.getAllScore(user1, user2);
                 }
                 case "Н" -> {
                     if (computerValue.equals("Н")) {
                         System.out.println("Ничья");
-                        function.getAllScore(user1, user2);
                     }
                     if (computerValue.equals("Б")) {
                         System.out.println("Победил " + "\"" + user2.getName() + "\"");
                         user2.increaseScore();
-                        function.getAllScore(user1, user2);
                     }
                     if (computerValue.equals("К")) {
                         System.out.println("Победил " + "\"" + user1.getName() + "\"");
                         user1.increaseScore();
-                        function.getAllScore(user1, user2);
                     }
+                    function.getAllScore(user1, user2);
                 }
                 case "Б" -> {
                     if (computerValue.equals("Б")) {
                         System.out.println("Ничья");
-                        function.getAllScore(user1, user2);
                     }
                     if (computerValue.equals("К")) {
                         System.out.println("Победил " + "\"" + user2.getName() + "\"");
                         user2.increaseScore();
-                        function.getAllScore(user1, user2);
                     }
                     if (computerValue.equals("Н")) {
                         System.out.println("Победил " + "\"" + user1.getName() + "\"");
                         user1.increaseScore();
-                        function.getAllScore(user1, user2);
                     }
+                    function.getAllScore(user1, user2);
                 }
             }
             if (userValue.equals("СТОП")) {
