@@ -1,0 +1,2 @@
+Hi! This is a simple text. It is created for testing the File class.
+Thanks!
