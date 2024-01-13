@@ -39,13 +39,4 @@ public class ProductBasket {
             clear();
         }
     }
-
-    public void topBalance(int sumTop) {
-        System.out.println("\n" + "Проверка платежа: ");
-        balance = balance + sumTop;
-        System.out.println("Пополнение баланса прошло успешно!" + "\n"
-                + "Текущий баланс: " + balance);
-
-    }
-
 }

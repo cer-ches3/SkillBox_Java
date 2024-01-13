@@ -2,5 +2,8 @@
 <project version="4">
   <component name="VcsDirectoryMappings">
     <mapping directory="" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/M17.2 create Stream" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/M17.3 orerators" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/M17.4 Terminal operation" vcs="Git" />
   </component>
 </project>

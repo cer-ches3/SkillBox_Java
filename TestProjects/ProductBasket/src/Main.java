@@ -15,7 +15,5 @@ public class Main {
         basket.printListProduct("Содержимое корзины: ");
         basket.toPay("Проверка платежа: ");
 
-        basket.topBalance(1000);
-        basket.toPay("Проверка платежа: ");
     }
 }
