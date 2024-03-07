@@ -18,7 +18,7 @@ public class BeanOne {
 
     @PostConstruct
     public void postConstruct() {
-        System.out.println("Вызов методв postConstruct");
+        System.out.println("Вызов метода postConstruct");
     }
 
     @PreDestroy

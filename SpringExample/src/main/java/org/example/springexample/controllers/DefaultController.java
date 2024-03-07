@@ -1,3 +1,4 @@
+/*
 package org.example.springexample.controllers;
 
 import org.springframework.http.HttpStatus;
@@ -45,3 +46,4 @@ public class DefaultController {
 
 
 }
+*/
