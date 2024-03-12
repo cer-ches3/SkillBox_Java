@@ -1,0 +1,15 @@
+server:
+  port: 8081
+
+logging:
+  level:
+    org.example.springexample: debug
+
+comment:
+  length:
+    max: 300
+
+app:
+  name: myApp
+  maxConnection: 10
+  enableFeature: true
