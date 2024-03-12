@@ -13,3 +13,10 @@ app:
   name: myApp
   maxConnection: 10
   enableFeature: true
+
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/skillbox
+    username: skillbox
+    password: skillbox
+    driver-class-name: org.postgresql.Driver
