@@ -1,18 +1,8 @@
-server:
-  port: 8081
-
-logging:
-  level:
-    org.example.springexample: debug
-
-comment:
-  length:
-    max: 300
-
 app:
   name: myApp
   maxConnection: 10
   enableFeature: true
+
 
 spring:
   datasource:
@@ -20,3 +10,15 @@ spring:
     username: skillbox
     password: skillbox
     driver-class-name: org.postgresql.Driver
+
+
+  jpa:
+    show-sql: true
+    hibernate.ddl-auto: create
+    generate-ddl: true
+
+
+
+
+
+

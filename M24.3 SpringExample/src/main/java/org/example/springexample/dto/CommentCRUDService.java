@@ -1,5 +1,9 @@
 package org.example.springexample.dto;
 
+import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
+import org.example.springexample.entity.Comment;
+import org.example.springexample.repository.CommentRepository;
 import org.example.springexample.services.CRUDService;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
@@ -7,51 +11,63 @@ import org.springframework.stereotype.Service;
 import java.util.Collection;
 import java.util.TreeMap;
 
+@RequiredArgsConstructor
+@Slf4j
 @Service
 public class CommentCRUDService implements CRUDService <CommentDto> {
-    private TreeMap<Integer, CommentDto> storage = new TreeMap<>();
 
-    @Value("${comment.length.max}")
-    private Integer maxLength;
+    private final CommentRepository repository;
 
     @Override
     public CommentDto getByID(Integer id) {
-        System.out.println("get by id - " + id);
-        return storage.get(id);
+        log.info("get by id - " + id);
+        Comment comment = repository.findById(id).orElseThrow();
+        return mapToDto(comment);
     }
 
     @Override
     public Collection<CommentDto> getAll() {
-        System.out.println("Get all");
-        return storage.values();
+        log.info("Get all");
+        return repository.findAll()
+                .stream()
+                .map(CommentCRUDService::mapToDto)
+                .toList();
     }
 
     @Override
     public void create(CommentDto item) {
-        if (item.getText().length() > maxLength) {
-            throw  new RuntimeException("Comment is too long");
-        }
-        int lastId = storage.isEmpty() ? 1 : storage.lastKey() + 1;
-        item.setId(lastId);
-        storage.put(lastId, item);
-        System.out.println("Create");
+        log.info("Create");
+        Comment comment = mapToEntity(item);
+        repository.save(comment);
     }
 
     @Override
-    public void update(Integer id, CommentDto item) {
-        if (!storage.containsKey(id)) {
-            return;
-        }
-        item.setId(id);
-        storage.put(id, item);
-        System.out.println("update id - " + id);
+    public void update(CommentDto item) {
+        log.info("update id");
+        Comment comment = mapToEntity(item);
+        repository.save(comment);
 
     }
 
     @Override
     public void delete(Integer id) {
-        storage.remove(id);
-        System.out.println("delete id - " + id);
+        log.info("delete id - " + id);
+        repository.deleteById(id);
+    }
 
+    private static CommentDto mapToDto(Comment comment) {
+        CommentDto commentDto = new CommentDto();
+        commentDto.setId(comment.getId());
+        commentDto.setText(comment.getText());
+        commentDto.setAuthor(comment.getAuthor());
+        return commentDto;
+    }
+
+    public static Comment mapToEntity(CommentDto commentDto) {
+        Comment comment = new Comment();
+        comment.setId(commentDto.getId());
+        comment.setText(commentDto.getText());
+        comment.setAuthor(commentDto.getAuthor());
+        return comment;
     }
 }

@@ -24,8 +24,8 @@ public class AppConfig {
                 '}';
     }
 
-    @PostConstruct
+    /*@PostConstruct
     public void printConfig() {
         System.out.println(this);
-    }
+    }*/
 }
