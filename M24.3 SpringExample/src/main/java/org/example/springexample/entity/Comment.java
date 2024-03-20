@@ -21,8 +21,9 @@ public class Comment {
     @Column(name = "text")
     private String text;
 
-    @Column(name = "author")
-    private String author;
+    @ManyToOne
+    @JoinColumn(name = "author_id")
+    private Author author;
 
     @CreationTimestamp
     @Column(name = "creation_time")
