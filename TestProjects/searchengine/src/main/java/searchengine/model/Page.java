@@ -1,6 +1,5 @@
 package searchengine.model;
 
-import com.sun.istack.NotNull;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -9,24 +8,24 @@ import javax.persistence.*;
 @Entity
 @Getter
 @Setter
-@Table(name = "Pages")
+@Table(name="Pages", indexes = {@Index(name = "Path_INDX", columnList = "path")})
 public class Page {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id",columnDefinition = "INTEGER", nullable = false)
-    private Integer id;
+    @Column(name = "id", nullable = false)
+    private int id;
 
-    @ManyToOne
-    @JoinColumn(name = "site_id", columnDefinition = "INTEGER", nullable = false)
-    private Site site;
-
-    @Column(name = "path", columnDefinition = "TEXT", nullable = false)
+    @Column(name = "path", nullable = false)
     private String path;
 
-    @Column(name = "code", columnDefinition = "INTEGER", nullable = false)
-    private Integer code;
+    @Column(name = "code", nullable = false)
+    private int code;
 
     @Column(name = "content", columnDefinition = "MEDIUMTEXT",nullable = false)
     private String content;
+
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "site_id")
+    private Site site;
 }
