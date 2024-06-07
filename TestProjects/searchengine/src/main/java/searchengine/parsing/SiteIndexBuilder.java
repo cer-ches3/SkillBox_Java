@@ -1,7 +1,7 @@
 package searchengine.parsing;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import searchengine.SiteRepository;
+import lombok.Getter;
+import searchengine.repo.SiteRepository;
 import searchengine.model.Site;
 import searchengine.model.StatusType;
 
@@ -13,7 +13,8 @@ public class SiteIndexBuilder implements Runnable{
 
     private String url;
     private String name;
-    private boolean started;
+    @Getter
+    private static volatile boolean started;
 
 
     public SiteIndexBuilder(String url, String name) {
@@ -36,5 +37,13 @@ public class SiteIndexBuilder implements Runnable{
         site.setName(name);
         siteRepository.save(site);
         return site;
+    }
+
+    public static void start() {
+        SiteIndexBuilder.started = true;
+    }
+
+    public static void stop() {
+        started = false;
     }
 }
