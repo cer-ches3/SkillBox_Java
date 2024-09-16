@@ -1,5 +1,6 @@
 package org.example.socialNetworkUsers.Entity;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 import lombok.Data;
 import org.hibernate.annotations.CreationTimestamp;
@@ -27,6 +28,8 @@ public class User {
     @CreationTimestamp
     private LocalDateTime creationDate;
 
-    @Column(name = "social_network_name", length = 20)
-    private String socialNetworkName;
+    @JsonBackReference
+    @ManyToOne()
+    @JoinColumn(name = "social_network_id")
+    private SocialNetwork socialNetwork;
 }

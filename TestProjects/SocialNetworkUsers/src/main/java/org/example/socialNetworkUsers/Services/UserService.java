@@ -4,13 +4,14 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.example.socialNetworkUsers.Dto.Message;
 import org.example.socialNetworkUsers.Dto.UserDto;
+import org.example.socialNetworkUsers.Entity.SocialNetwork;
 import org.example.socialNetworkUsers.Entity.User;
+import org.example.socialNetworkUsers.Repositories.SocialNetworkRepository;
 import org.example.socialNetworkUsers.Repositories.UserRepository;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
-import java.time.LocalDateTime;
 import java.util.Collection;
 
 @Service
@@ -18,7 +19,8 @@ import java.util.Collection;
 @RequiredArgsConstructor
 public class UserService implements CRUDService<UserDto>{
     private final UserRepository userRepository;
-    Message userNotFound = new Message("Пользователь с таким id не найден!");
+    private final SocialNetworkRepository socialNetworkRepository;
+    private final Message userNotFound = new Message("Пользователь с таким id не найден!");
 
     @Override
     public ResponseEntity getAll() {
@@ -47,6 +49,9 @@ public class UserService implements CRUDService<UserDto>{
     public ResponseEntity create(UserDto userDto) {
         log.info("Creating user");
         User user = mapToEntity(userDto);
+        Integer socialNetworkID = userDto.getSocialNetworkID();
+        SocialNetwork socialNetwork = socialNetworkRepository.findById(socialNetworkID).orElseThrow();
+        user.setSocialNetwork(socialNetwork);
         userRepository.save(user);
         return new ResponseEntity<>(mapToDto(user), HttpStatus.CREATED);
     }
@@ -58,8 +63,9 @@ public class UserService implements CRUDService<UserDto>{
             return new ResponseEntity<>(userNotFound, HttpStatus.NOT_FOUND);
         }else {
             User user = mapToEntity(userDto);
-            user.setId(id);
-            user.setCreationDate(LocalDateTime.now());
+            Integer socialNetworkID = userDto.getSocialNetworkID();
+            SocialNetwork socialNetwork = socialNetworkRepository.findById(socialNetworkID).orElseThrow();
+            user.setSocialNetwork(socialNetwork);
             userRepository.save(user);
             return new ResponseEntity<>(mapToDto(user), HttpStatus.OK);
         }
@@ -90,7 +96,7 @@ public class UserService implements CRUDService<UserDto>{
         userDto.setLastName(user.getLastName());
         userDto.setAge(user.getAge());
         userDto.setCreationDate(user.getCreationDate());
-        userDto.setSocialNetworkName(user.getSocialNetworkName());
+        userDto.setSocialNetworkID(SocialNetworkService.mapToDto(user.getSocialNetwork()).getId());
         return userDto;
     }
 
@@ -101,7 +107,6 @@ public class UserService implements CRUDService<UserDto>{
         user.setLastName(userDto.getLastName());
         user.setAge(userDto.getAge());
         user.setCreationDate(userDto.getCreationDate());
-        user.setSocialNetworkName(userDto.getSocialNetworkName());
         return user;
     }
 }

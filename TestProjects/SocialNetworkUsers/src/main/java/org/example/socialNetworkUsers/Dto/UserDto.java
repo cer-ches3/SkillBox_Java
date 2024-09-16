@@ -11,5 +11,5 @@ public class UserDto {
     private String lastName;
     private Integer age;
     private LocalDateTime creationDate;
-    private String socialNetworkName;
+    private Integer socialNetworkID;
 }
