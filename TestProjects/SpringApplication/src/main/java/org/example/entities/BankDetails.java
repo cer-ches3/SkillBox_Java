@@ -4,6 +4,8 @@ import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.util.List;
+
 @Entity
 @Table(name = "bank_details")
 @Getter
@@ -23,4 +25,6 @@ public class BankDetails {
     @Column(name = "cor_score")
     private String corScore;
 
+    @OneToMany(mappedBy = "bank", cascade = CascadeType.ALL)
+    List<UserDetails> usersList;
 }

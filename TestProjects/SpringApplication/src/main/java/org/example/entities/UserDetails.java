@@ -16,9 +16,11 @@ public class UserDetails {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    @Column(name = "phone")
-    private String phone;
+    @Column(name = "login")
+    private String login;
 
+    @Column(name = "password")
+    private String password;
 
     @Column(name = "surname")
     private String surname;
@@ -35,6 +37,9 @@ public class UserDetails {
     @Column(name = "age")
     private Integer age;
 
+    @Column(name = "phone")
+    private String phone = login;
+
     @Column(name = "email")
     private String email;
 
@@ -50,6 +55,7 @@ public class UserDetails {
     @Column(name = "validity_period")
     private String validityPeriod;
 
-    @Column(name = "bank_id")
-    private Integer bankId;
+    @JoinColumn(name = "bank_id")
+    @ManyToOne(fetch = FetchType.LAZY)
+    private BankDetails bank;
 }
